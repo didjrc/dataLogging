@@ -16,7 +16,7 @@
 @end
 
 @implementation DataLogViewController {
-    NSArray *dataLogTest;
+    NSMutableArray *dataLogTest;
 }
 //@synthesize tableView;          
 
@@ -97,12 +97,22 @@
     [dateFormatter setDateFormat:@"MMM dd, h:mm:ss:SSS"];
     
     cell.textLabel.text = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:data.timestamp / 1000]];
+    //create an NSMutableArray container to store formatted date as output for Segue Title:
+    [dataLogTest addObject:[dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:data.timestamp / 1000]]];
     
 //    cell.detailTextLabel.text = [NSString stringWithFormat:@"Packet %u", data.packetId];
     
     return cell;
 }
 
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"showDataLogDetail"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        DetailsViewController *destViewController = segue.destinationViewController;
+//        destViewController.dataLogTitle_segue = [dataLogTest objectAtIndex:indexPath.row];
+        destViewController.dataLogTitle_segue = [dataLogTest objectAtIndex:indexPath.row];
+    }
+}
 //#pragma mark - Reset Data
 //
 //- (IBAction)resetDataButton:(id)sender {
