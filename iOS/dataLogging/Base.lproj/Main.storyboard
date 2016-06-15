@@ -51,7 +51,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="dataLogging" id="b81-ry-lNb"/>
                     <connections>
-                        <outlet property="tableView" destination="nlu-vf-9VR" id="nQk-9s-34g"/>
+                        <outlet property="tableView" destination="nlu-vf-9VR" id="pyH-CK-B9E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

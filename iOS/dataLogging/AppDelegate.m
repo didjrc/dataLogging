@@ -14,6 +14,13 @@
 
 @implementation AppDelegate
 
+//test
+NSUUID *myAppUUID = nil;
++ (void)initialize {
+    if(!myAppUUID)
+        myAppUUID = [[NSUUID alloc] initWithUUIDString:@"5fbb51fe-299d-48ca-bcaf-9c90d8ff9a9d"];
+}
+//endTest
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -21,10 +28,17 @@
     self.central = [PBPebbleCentral defaultCentral];
     self.central.delegate = self;
     
+    /* test
     // Register UUID
     NSUUID *myAppUUID =
     [[NSUUID alloc] initWithUUIDString:@"5fbb51fe-299d-48ca-bcaf-9c90d8ff9a9d"];
+      endTest */
+    
     [PBPebbleCentral defaultCentral].appUUID = myAppUUID;
+    
+    //test
+    [[[PBPebbleCentral defaultCentral] dataLoggingServiceForAppUUID:myAppUUID] setDelegate:[Tricorder sharedTricorder]];
+    //endTest
     
     // Begin connection
     [self.central run];
@@ -39,6 +53,7 @@
     
     if (self.connectedWatch) {
         [self launchPebbleApp];
+        [[[PBPebbleCentral defaultCentral] dataLoggingServiceForAppUUID:myAppUUID] pollForDataFromWatch:(PBWatch *)watch]; //test
         NSLog(@"Pebble connected: %@", [watch name]);
         return;
     } else {

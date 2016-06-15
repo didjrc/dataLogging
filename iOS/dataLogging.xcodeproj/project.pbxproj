@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4A807FAF1D10491D008584A4 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A807FAE1D10491D008584A4 /* DetailsViewController.m */; };
+		4A807FB21D10544E008584A4 /* TricorderData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A807FB11D10544E008584A4 /* TricorderData.m */; };
+		4A807FB51D105566008584A4 /* Tricorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A807FB41D105566008584A4 /* Tricorder.m */; };
 		4AB8AD7A1D103BE700D8AD72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB8AD791D103BE700D8AD72 /* main.m */; };
 		4AB8AD7D1D103BE700D8AD72 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB8AD7C1D103BE700D8AD72 /* AppDelegate.m */; };
 		4AB8AD801D103BE700D8AD72 /* DataLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB8AD7F1D103BE700D8AD72 /* DataLogViewController.m */; };
@@ -21,6 +23,10 @@
 		1C01F7EB5DABCD18AF770CE5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4A807FAD1D10491D008584A4 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		4A807FAE1D10491D008584A4 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		4A807FB01D10544E008584A4 /* TricorderData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TricorderData.h; sourceTree = "<group>"; };
+		4A807FB11D10544E008584A4 /* TricorderData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TricorderData.m; sourceTree = "<group>"; };
+		4A807FB31D105566008584A4 /* Tricorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tricorder.h; sourceTree = "<group>"; };
+		4A807FB41D105566008584A4 /* Tricorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tricorder.m; sourceTree = "<group>"; };
 		4AB8AD751D103BE700D8AD72 /* dataLogging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dataLogging.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AB8AD791D103BE700D8AD72 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4AB8AD7B1D103BE700D8AD72 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -76,6 +82,10 @@
 				4AB8AD7F1D103BE700D8AD72 /* DataLogViewController.m */,
 				4A807FAD1D10491D008584A4 /* DetailsViewController.h */,
 				4A807FAE1D10491D008584A4 /* DetailsViewController.m */,
+				4A807FB01D10544E008584A4 /* TricorderData.h */,
+				4A807FB11D10544E008584A4 /* TricorderData.m */,
+				4A807FB31D105566008584A4 /* Tricorder.h */,
+				4A807FB41D105566008584A4 /* Tricorder.m */,
 				4AB8AD811D103BE700D8AD72 /* Main.storyboard */,
 				4AB8AD841D103BE700D8AD72 /* Assets.xcassets */,
 				4AB8AD861D103BE700D8AD72 /* LaunchScreen.storyboard */,
@@ -233,8 +243,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AB8AD801D103BE700D8AD72 /* DataLogViewController.m in Sources */,
+				4A807FB21D10544E008584A4 /* TricorderData.m in Sources */,
 				4AB8AD7D1D103BE700D8AD72 /* AppDelegate.m in Sources */,
 				4AB8AD7A1D103BE700D8AD72 /* main.m in Sources */,
+				4A807FB51D105566008584A4 /* Tricorder.m in Sources */,
 				4A807FAF1D10491D008584A4 /* DetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
