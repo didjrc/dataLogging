@@ -10,9 +10,11 @@
 
 //#import "Utils.h"
 
-static NSUInteger const TricorderDataLength = 31;
+//static NSUInteger const TricorderDataLength = 31;
+static NSUInteger const TricorderDataLength = 11;
 
-@implementation TricorderData
+//@implementation TricorderData
+@implementation EczemamaLogger
 
 - (instancetype)initWithBytes:(const UInt8 *const)bytes andLength:(NSUInteger)length {
     if (self = [super init]) {
@@ -50,14 +52,14 @@ static NSUInteger const TricorderDataLength = 31;
         
         _connectionStatus = CFSwapInt16LittleToHost(*(uint16_t*)subdataBytes);
         
-        range.location += range.length;
-        range.length = 1;
-        subdataBytes = [[data subdataWithRange:range] bytes];
+//        range.location += range.length;
+//        range.length = 1;
+//        subdataBytes = [[data subdataWithRange:range] bytes];
         
-        _chargePercent = CFSwapInt16LittleToHost(*(uint16_t*)subdataBytes);
-        
-        range.location += range.length;
-        range.length = 15;
+//        _chargePercent = CFSwapInt16LittleToHost(*(uint16_t*)subdataBytes);
+//        
+//        range.location += range.length;
+//        range.length = 15;
         
 //        _accelData = [[AccelData alloc] initWithData:[data subdataWithRange:range]];
 //        
@@ -80,7 +82,7 @@ static NSUInteger const TricorderDataLength = 31;
     NSLog(@"packet_id:\t\t\t%d", _packetId);
     NSLog(@"timestamp:\t\t\t%llu", _timestamp);
     NSLog(@"connection_status:\t%d", _connectionStatus);
-    NSLog(@"charge_percent:\t\t%d", _chargePercent);
+//    NSLog(@"charge_percent:\t\t%d", _chargePercent);
 //    NSLog(@"accel:\t\t\t\t%05d\t%05d\t%05d\t%d\t%llu", _accelData.x, _accelData.y, _accelData.z, _accelData.didVibrate, _accelData.timestamp);
 //    NSLog(@"crc32_pebble:\t\t\t%d", _crc32Pebble);
 //    NSLog(@"crc32_phone:\t\t\t%d", _crc32Phone);

@@ -11,11 +11,11 @@
 #import "Tricorder.h"
 #import "TricorderData.h"
 
-@interface UIViewController ()
+@interface DataLogViewController ()
 @property(nonatomic, strong) IBOutlet UITableView *tableView;
 @end
 
-@implementation ViewController {
+@implementation DataLogViewController {
     NSArray *dataLogTest;
 }
 //@synthesize tableView;          
@@ -88,8 +88,10 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    TricorderData *data = Tricorder.sharedTricorder.recordedData[indexPath.row];
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.selectionStyle = UITableViewCellStyleDefault;
+//    TricorderData *data = Tricorder.sharedTricorder.recordedData[indexPath.row];
+    EczemamaLogger *data = Tricorder.sharedTricorder.recordedData[indexPath.row];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MMM dd, h:mm:ss:SSS"];

@@ -19,6 +19,7 @@ NSUUID *myAppUUID = nil;
 + (void)initialize {
     if(!myAppUUID)
         myAppUUID = [[NSUUID alloc] initWithUUIDString:@"5fbb51fe-299d-48ca-bcaf-9c90d8ff9a9d"];
+//        myAppUUID = [[NSUUID alloc] initWithUUIDString:@"8956c2d3-c9d5-4826-a7ca-df4943c514de"];
 }
 //endTest
 

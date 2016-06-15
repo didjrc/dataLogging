@@ -9,7 +9,7 @@
         <!--dataLogging-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="DataLogViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -35,8 +35,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Qe8-uI-GID"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="xZy-lB-cbo"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="PXo-1x-TsM"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="500-tZ-qiV"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -51,7 +51,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="dataLogging" id="b81-ry-lNb"/>
                     <connections>
-                        <outlet property="tableView" destination="nlu-vf-9VR" id="pyH-CK-B9E"/>
+                        <outlet property="tableView" destination="nlu-vf-9VR" id="dNl-eT-uYZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

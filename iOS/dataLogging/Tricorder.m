@@ -59,7 +59,8 @@ NSString *const TricorderDataUpdatedNotification = @"tricorderUpdated";
     return _recordedData.count;
 }
 
-- (TricorderData *)latestData {
+- (EczemamaLogger *)latestData {
+//- (TricorderData *)latestData {
     return _recordedData.firstObject;
 }
 
@@ -83,16 +84,17 @@ NSString *const TricorderDataUpdatedNotification = @"tricorderUpdated";
     for (NSUInteger i = 0; i < numberOfItems; i++) {
         const uint8_t *logBytes = &bytes[i * session.itemSize];
         
-        TricorderData *data = [[TricorderData alloc] initWithBytes:logBytes andLength:session.itemSize];
+//        TricorderData *data = [[TricorderData alloc] initWithBytes:logBytes andLength:session.itemSize];
+        EczemamaLogger *data = [[EczemamaLogger alloc] initWithBytes:logBytes andLength:session.itemSize];
         [data log];
         
         if (data.packetId == 1) {
             [self resetData];
         }
         
-        if (data.crc32Pebble != data.crc32Phone) {
-            _crcMismatches++;
-        }
+//        if (data.crc32Pebble != data.crc32Phone) {
+//            _crcMismatches++;
+//        }
         
         if (data.packetId < self.latestPacketId) {
             _outOfOrderPackets++;
