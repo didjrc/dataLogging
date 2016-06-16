@@ -41,9 +41,24 @@ NSUUID *myAppUUID = nil;
     [[[PBPebbleCentral defaultCentral] dataLoggingServiceForAppUUID:myAppUUID] setDelegate:[Tricorder sharedTricorder]];
     //endTest
     
-    // Begin connection
+    // Begin Pebble connection
     [self.central run];
     NSLog(@"self.central run");
+
+//    Controls all UINavigationBar Items
+    //test
+//    NSShadow *shadow = [[NSShadow alloc] init];
+//    shadow.shadowOffset = CGSizeMake(0.0, 1.0);
+//    shadow.shadowColor = [UIColor whiteColor];
+//    
+//    NSDictionary *attributes = @{
+//                                 NSForegroundColorAttributeName:[UIColor blackColor],
+//                                 NSShadowAttributeName:shadow,
+//                                 NSFontAttributeName:[UIFont boldSystemFontOfSize:8.0]
+//                                 };
+//    
+//    [[UINavigationBar appearance] setTitleTextAttributes:attributes];
+    //endTest
     return YES;
 }
 

@@ -68,6 +68,22 @@
                                                   usingBlock:^(NSNotification *note) {
                                                       [self.tableView reloadData];
                                                   }];
+    
+    //test
+//    UIBarButtonItem *item = [[UIBarButtonItem alloc] init];
+//    item.title = @"Backie";
+//    self.navigationItem.backBarButtonItem = item;
+//    
+//    NSDictionary *attributes = @{
+//                                 NSForegroundColorAttributeName:[UIColor blackColor],
+//                                 NSFontAttributeName:[UIFont boldSystemFontOfSize:8.0]
+//                                 };
+
+//    [[UIBarButtonItem appearance] setTitleTextAttributes:attributes];
+    
+    // Set this in every view controller so that the back button displays back instead of the root view controller name
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"back" style:UIBarButtonItemStylePlain target:nil action:nil];
+    //endTest
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
