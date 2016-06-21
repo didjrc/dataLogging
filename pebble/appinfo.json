@@ -1,0 +1,18 @@
+{
+  "uuid": "5fbb51fe-299d-48ca-bcaf-9c90d8ff9a9d",
+  "shortName": "CountLogger",
+  "longName": "Count Logger", 
+  "companyName": "DIC",
+  "versionLabel": "1.0",
+  "sdkVersion": "3",
+  "targetPlatforms": ["aplite", "basalt", "chalk"],
+  "watchapp": {
+    "watchface": false
+  },
+  "appKeys": {
+    "dummy": 0
+  },
+  "resources": {
+    "media": []
+  }
+}
