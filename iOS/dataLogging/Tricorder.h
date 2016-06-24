@@ -13,6 +13,8 @@ extern NSString *const TricorderDataUpdatedNotification;
 @interface Tricorder : NSObject <PBDataLoggingServiceDelegate>
 
 @property (readonly) NSMutableArray *recordedData;
+@property (readonly) NSMutableArray *persistData; //test
+@property (readonly) NSInteger count; //test
 @property (readonly) NSInteger crcMismatches;
 @property (readonly) NSInteger duplicatePackets;
 @property (readonly) NSInteger outOfOrderPackets;

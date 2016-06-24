@@ -107,6 +107,7 @@
 //    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.selectionStyle = UITableViewCellStyleDefault;
 //    TricorderData *data = Tricorder.sharedTricorder.recordedData[indexPath.row];
+	/* Original Code -- WORKING
     EczemamaLogger *data = Tricorder.sharedTricorder.recordedData[indexPath.row];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -115,8 +116,17 @@
     cell.textLabel.text = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:data.timestamp / 1000]];
     //create an NSMutableArray container to store formatted date as output for Segue Title:
     [dataLogTest addObject:[dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:data.timestamp / 1000]]];
-    
+	
 //    cell.detailTextLabel.text = [NSString stringWithFormat:@"Packet %u", data.packetId];
+	 */
+	//test Load NSUserdefaults
+	NSUserDefaults *loadPersistData = [NSUserDefaults standardUserDefaults];
+	_loadedPersistData = [loadPersistData mutableArrayValueForKey:@"Log"];
+	
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"MMM dd, h:mm:ss:SSS"];
+	
+	//need to make a struct of the persisted data in order to referene the data?
     
     return cell;
 }

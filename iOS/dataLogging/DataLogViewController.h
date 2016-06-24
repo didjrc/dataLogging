@@ -10,5 +10,6 @@
 
 @interface DataLogViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>;
 //@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (readonly) NSMutableArray *loadedPersistData; //test
 
 @end

@@ -34,6 +34,9 @@ NSString *const TricorderDataUpdatedNotification = @"tricorderUpdated";
     if (self = [super init]) {
         _recordedData = [[NSMutableArray alloc] init];
         _packetIds = [[NSMutableArray alloc] init];
+		//test
+		_persistData = [[NSMutableArray alloc] init];
+		//endTest
     }
     return self;
 }
@@ -71,6 +74,9 @@ NSString *const TricorderDataUpdatedNotification = @"tricorderUpdated";
     _missingPackets = 0;
     [_recordedData removeAllObjects];
     [_packetIds removeAllObjects];
+	//test
+	[_persistData removeAllObjects];
+	//endTest
     
     [[NSNotificationCenter defaultCenter] postNotificationName:TricorderDataUpdatedNotification object:self];
 }
@@ -107,6 +113,10 @@ NSString *const TricorderDataUpdatedNotification = @"tricorderUpdated";
         [_packetIds addObject:@(data.packetId)];
         
         [_recordedData insertObject:data atIndex:0];
+		
+		//test
+		[_persistData insertObject:data atIndex:0];
+		//endTest
     }
     
     _missingPackets = [[_packetIds valueForKeyPath:@"@max.self"] intValue] - (_recordedData.count - _duplicatePackets);
@@ -117,6 +127,11 @@ NSString *const TricorderDataUpdatedNotification = @"tricorderUpdated";
 - (void)dataLoggingService:(PBDataLoggingService *)service
           sessionDidFinish:(PBDataLoggingSessionMetadata *)session {
     [[NSNotificationCenter defaultCenter] postNotificationName:TricorderDataUpdatedNotification object:self];
+	//test writes to NSUserDefaults
+	NSUserDefaults *dataLogPersist = [NSUserDefaults standardUserDefaults];
+	_persistData = [dataLogPersist mutableArrayValueForKey:@"Log %d"];
+	[dataLogPersist synchronize]; //pushes save to NSUserDefaults
+	//endtest
 }
 
 @end
