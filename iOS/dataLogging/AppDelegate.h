@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <PebbleKit/PebbleKit.h>
-#import "Tricorder.h" //test
+#import "Tricorder.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, PBPebbleCentralDelegate, PBWatchDelegate>
 

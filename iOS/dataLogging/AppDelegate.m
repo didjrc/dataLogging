@@ -28,13 +28,14 @@ NSUUID *myAppUUID = nil;
     // Set the delegate to receive PebbleKit events
     self.central = [PBPebbleCentral defaultCentral];
     self.central.delegate = self;
-    
+	
     /* test
     // Register UUID
     NSUUID *myAppUUID =
     [[NSUUID alloc] initWithUUIDString:@"5fbb51fe-299d-48ca-bcaf-9c90d8ff9a9d"];
       endTest */
-    
+	
+	
     [PBPebbleCentral defaultCentral].appUUID = myAppUUID;
     
     //test

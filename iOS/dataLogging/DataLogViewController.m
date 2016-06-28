@@ -20,13 +20,20 @@
 }
 //@synthesize tableView;          
 
-/*
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    dataLogTest = [NSArray arrayWithObjects:@"01", @"02", @"03", @"04", nil];
+	//test Load NSUserdefaults
+	//http://stackoverflow.com/questions/15857408/attempt-to-insert-non-property-value-objective-c
+	NSUserDefaults *persistedLogs = [NSUserDefaults standardUserDefaults];
+	NSData *retrievedData = [persistedLogs objectForKey:@"Logs"];
+	NSMutableArray *retrievedContainer = [NSKeyedUnarchiver unarchiveObjectWithData:retrievedData];
+	dataLogTest = [[NSMutableArray alloc] initWithArray:retrievedContainer];
+	//endTest
 }
 
+/*
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [dataLogTest count];
 }
@@ -95,7 +102,7 @@
 #pragma mark - UITableViewController
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return Tricorder.sharedTricorder.numberOfLogs;
+    return Tricorder.sharedTricorder.numberOfLogs; //determines number of rows to populate in table
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -104,9 +111,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.selectionStyle = UITableViewCellStyleDefault;
-//    TricorderData *data = Tricorder.sharedTricorder.recordedData[indexPath.row];
 	/* Original Code -- WORKING
     EczemamaLogger *data = Tricorder.sharedTricorder.recordedData[indexPath.row];
     
@@ -117,14 +122,15 @@
     //create an NSMutableArray container to store formatted date as output for Segue Title:
     [dataLogTest addObject:[dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:data.timestamp / 1000]]];
 	
-//    cell.detailTextLabel.text = [NSString stringWithFormat:@"Packet %u", data.packetId];
 	 */
-	//test Load NSUserdefaults
-	NSUserDefaults *loadPersistData = [NSUserDefaults standardUserDefaults];
-	_loadedPersistData = [loadPersistData mutableArrayValueForKey:@"Log"];
 	
-	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-	[dateFormatter setDateFormat:@"MMM dd, h:mm:ss:SSS"];
+	//test -- Output NSUserDefaults
+	cell.textLabel.text = _loadedPersistData[indexPath.row];
+	[dataLogTest addObject:Tricorder.sharedTricorder.recordedData[indexPath.row]];
+	//endTest
+	
+//	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//	[dateFormatter setDateFormat:@"MMM dd, h:mm:ss:SSS"];
 	
 	//need to make a struct of the persisted data in order to referene the data?
     

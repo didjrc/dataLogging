@@ -35,7 +35,7 @@ NSString *const TricorderDataUpdatedNotification = @"tricorderUpdated";
         _recordedData = [[NSMutableArray alloc] init];
         _packetIds = [[NSMutableArray alloc] init];
 		//test
-		_persistData = [[NSMutableArray alloc] init];
+		_persistDataContainer = [[NSMutableArray alloc] init];
 		//endTest
     }
     return self;
@@ -74,10 +74,10 @@ NSString *const TricorderDataUpdatedNotification = @"tricorderUpdated";
     _missingPackets = 0;
     [_recordedData removeAllObjects];
     [_packetIds removeAllObjects];
-	//test
-	[_persistData removeAllObjects];
-	//endTest
-    
+//	//test --> Not necessary b/c don't want to overwrite this container....or is it possible to just use this as an active container for each datalogging session....NSUserDefaults obj will act as container Array. Each datalogging container array can then be appended to the NSUserDefaults container?
+//	[_persistDataContainer removeAllObjects];
+//	//endTest
+	
     [[NSNotificationCenter defaultCenter] postNotificationName:TricorderDataUpdatedNotification object:self];
 }
 
@@ -114,24 +114,28 @@ NSString *const TricorderDataUpdatedNotification = @"tricorderUpdated";
         
         [_recordedData insertObject:data atIndex:0];
 		
-		//test
-		[_persistData insertObject:data atIndex:0];
-		//endTest
+//		//test write to _persistDataContainer
+		[_persistDataContainer insertObject:data atIndex:0];
+//		//endTest
     }
     
     _missingPackets = [[_packetIds valueForKeyPath:@"@max.self"] intValue] - (_recordedData.count - _duplicatePackets);
-    
     return YES;
 }
 
 - (void)dataLoggingService:(PBDataLoggingService *)service
           sessionDidFinish:(PBDataLoggingSessionMetadata *)session {
     [[NSNotificationCenter defaultCenter] postNotificationName:TricorderDataUpdatedNotification object:self];
+	
 	//test writes to NSUserDefaults
-	NSUserDefaults *dataLogPersist = [NSUserDefaults standardUserDefaults];
-	_persistData = [dataLogPersist mutableArrayValueForKey:@"Log %d"];
-	[dataLogPersist synchronize]; //pushes save to NSUserDefaults
-	//endtest
+	NSUserDefaults *persistedLogs = [NSUserDefaults standardUserDefaults];
+	//test
+//	_persistDataContainer = [[NSMutableArray alloc] init];
+//	[persistedLogs setObject:_persistDataContainer forKey:@"Logs"];
+	// http://stackoverflow.com/questions/15857408/attempt-to-insert-non-property-value-objective-c
+	[persistedLogs setObject:[NSKeyedArchiver archivedDataWithRootObject:_persistDataContainer] forKey:@"Logs"];
+	//endTest
+	[persistedLogs synchronize];  //pushes save to NSUserDefaults
 }
 
 @end
