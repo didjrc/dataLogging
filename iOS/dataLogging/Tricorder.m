@@ -42,6 +42,13 @@ NSString *const TricorderDataUpdatedNotification = @"tricorderUpdated";
 }
 
 //http://nshipster.com/nscoding/
+//must try:
+//see: http://iphonedevsdk.com/forum/iphone-sdk-development/16205-saving-class-nsuserdefaults.html
+//see: http://stackoverflow.com/questions/2315948/how-to-store-custom-objects-in-nsuserdefaults
+- (void) encodeWithCoder:(NSCoder *) encoder {
+	[encoder encodeObject:self.persistDataContainer forKey:@"Logs"];
+}
+
 - (id) initWithCoder:(NSCoder *) decoder {
 	self = [super init];
 	if (!self) {
@@ -49,10 +56,6 @@ NSString *const TricorderDataUpdatedNotification = @"tricorderUpdated";
 	}
 	self.persistDataContainer = [decoder decodeObjectForKey:@"Logs"];
 	return self;
-}
-
-- (void) encodeWithCoder:(NSCoder *) encoder {
-	[encoder encodeObject:self.persistDataContainer forKey:@"Logs"];
 }
 
 - (NSString *)connectionStatus {
@@ -149,6 +152,7 @@ NSString *const TricorderDataUpdatedNotification = @"tricorderUpdated";
 	// http://stackoverflow.com/questions/15857408/attempt-to-insert-non-property-value-objective-c
 	[persistedLogs setObject:[[NSKeyedArchiver archivedDataWithRootObject:self.persistDataContainer] mutableCopy] forKey:@"Logs"];
 	//endTest
+	 
 	[persistedLogs synchronize];  //pushes save to NSUserDefaults
 }
 
