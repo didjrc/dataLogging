@@ -12,7 +12,7 @@
 #import "TricorderData.h"
 
 @interface DataLogViewController ()
-@property(nonatomic, strong) IBOutlet UITableView *tableView;
+//@property(nonatomic, strong) IBOutlet UITableView *tableView;
 @end
 
 @implementation DataLogViewController {
@@ -24,13 +24,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-	//test Load NSUserdefaults
-	//http://stackoverflow.com/questions/15857408/attempt-to-insert-non-property-value-objective-c
-	NSUserDefaults *persistedLogs = [NSUserDefaults standardUserDefaults];
-	NSData *retrievedData = [persistedLogs objectForKey:@"Logs"];
-	NSMutableArray *retrievedContainer = [NSKeyedUnarchiver unarchiveObjectWithData:retrievedData];
-	dataLogTest = [[NSMutableArray alloc] initWithArray:retrievedContainer];
-	//endTest
 }
 
 /*
@@ -125,8 +118,17 @@
 	 */
 	
 	//test -- Output NSUserDefaults
+	//test Load NSUserdefaults
+	//http://stackoverflow.com/questions/15857408/attempt-to-insert-non-property-value-objective-c
+	NSUserDefaults *persistedLogs = [NSUserDefaults standardUserDefaults];
+	NSData *retrievedData = [persistedLogs objectForKey:@"Logs"];
+	NSMutableArray *retrievedContainer = [[NSKeyedUnarchiver unarchiveObjectWithData:retrievedData] mutableCopy];
+	dataLogTest = [[NSMutableArray alloc] initWithArray:retrievedContainer];
+	//endTest
+	
+	
 	cell.textLabel.text = _loadedPersistData[indexPath.row];
-	[dataLogTest addObject:Tricorder.sharedTricorder.recordedData[indexPath.row]];
+//	[dataLogTest addObject:Tricorder.sharedTricorder.recordedData[indexPath.row]];
 	//endTest
 	
 //	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

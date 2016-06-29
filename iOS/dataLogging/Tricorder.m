@@ -41,6 +41,20 @@ NSString *const TricorderDataUpdatedNotification = @"tricorderUpdated";
     return self;
 }
 
+//http://nshipster.com/nscoding/
+- (id) initWithCoder:(NSCoder *) decoder {
+	self = [super init];
+	if (!self) {
+		return nil;
+	}
+	self.persistDataContainer = [decoder decodeObjectForKey:@"Logs"];
+	return self;
+}
+
+- (void) encodeWithCoder:(NSCoder *) encoder {
+	[encoder encodeObject:self.persistDataContainer forKey:@"Logs"];
+}
+
 - (NSString *)connectionStatus {
     return self.latestData.connectionStatus ? @"Connected" : @"Disconnected";
 }
@@ -133,7 +147,7 @@ NSString *const TricorderDataUpdatedNotification = @"tricorderUpdated";
 //	_persistDataContainer = [[NSMutableArray alloc] init];
 //	[persistedLogs setObject:_persistDataContainer forKey:@"Logs"];
 	// http://stackoverflow.com/questions/15857408/attempt-to-insert-non-property-value-objective-c
-	[persistedLogs setObject:[NSKeyedArchiver archivedDataWithRootObject:_persistDataContainer] forKey:@"Logs"];
+	[persistedLogs setObject:[[NSKeyedArchiver archivedDataWithRootObject:self.persistDataContainer] mutableCopy] forKey:@"Logs"];
 	//endTest
 	[persistedLogs synchronize];  //pushes save to NSUserDefaults
 }
